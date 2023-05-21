@@ -4,13 +4,15 @@
  */
 package domain;
 
+import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
  *
  * @author User
  */
-public class Voznja {
+public class Voznja  implements Serializable{
     private Long voznjaID;
     private int trajanje;
     private Date datum;
@@ -75,8 +77,8 @@ public class Voznja {
     
     @Override
     public String toString() {
-        return "Masinovodja: "+ masinovodja.getIme()+" "+masinovodja.getPrezime() + " upravlja vozom: "+ voz.getVozID()+":" + voz.getNazivVoza()
-                + " dana: " + datum + " . Trajanje voznje je: " + trajanje;
+        return "Masinovodja: " + masinovodja.getIme()+ " " + masinovodja.getPrezime() + ", upravlja vozom: " + voz.getNazivVoza()
+                + ", dana: " + new SimpleDateFormat("dd.MM.yyyy.").format(datum);
     }
     
     

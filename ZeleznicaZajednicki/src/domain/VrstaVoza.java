@@ -4,11 +4,14 @@
  */
 package domain;
 
+import java.io.Serializable;
+import java.util.Objects;
+
 /**
  *
  * @author User
  */
-public class VrstaVoza {
+public class VrstaVoza implements Serializable{
     private Long vrstaID;
     private String nazivVrste;
 
@@ -34,6 +37,37 @@ public class VrstaVoza {
 
     public void setNazivVrste(String nazivVrste) {
         this.nazivVrste = nazivVrste;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 83 * hash + Objects.hashCode(this.vrstaID);
+        hash = 83 * hash + Objects.hashCode(this.nazivVrste);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final VrstaVoza other = (VrstaVoza) obj;
+        if (!Objects.equals(this.nazivVrste, other.nazivVrste)) {
+            return false;
+        }
+        return Objects.equals(this.vrstaID, other.vrstaID);
+    }
+
+    @Override
+    public String toString() {
+        return nazivVrste ;
     }
 
     

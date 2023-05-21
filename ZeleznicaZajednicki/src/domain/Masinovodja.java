@@ -12,7 +12,7 @@ import java.util.Objects;
  *
  * @author User
  */
-public class Masinovodja {
+public class Masinovodja implements Serializable{
     private Long masinovodjaID;
     private String ime;
     private String prezime;

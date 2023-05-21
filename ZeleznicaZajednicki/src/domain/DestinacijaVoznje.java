@@ -4,11 +4,14 @@
  */
 package domain;
 
+import java.io.Serializable;
+import java.util.Objects;
+
 /**
  *
  * @author User
  */
-public class DestinacijaVoznje {
+public class DestinacijaVoznje implements Serializable{
     private Voznja voznja;
     private int redniBroj;
     private Mesto mesto;
@@ -49,6 +52,36 @@ public class DestinacijaVoznje {
     @Override
     public String toString() {
         return "DestinacijaVoznje{" + "voznja=" + voznja + ", redniBroj=" + redniBroj + ", mesto=" + mesto + '}';
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 71 * hash + Objects.hashCode(this.voznja);
+        hash = 71 * hash + this.redniBroj;
+        hash = 71 * hash + Objects.hashCode(this.mesto);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final DestinacijaVoznje other = (DestinacijaVoznje) obj;
+        if (this.redniBroj != other.redniBroj) {
+            return false;
+        }
+        if (!Objects.equals(this.voznja, other.voznja)) {
+            return false;
+        }
+        return Objects.equals(this.mesto, other.mesto);
     }
     
     

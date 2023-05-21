@@ -4,11 +4,14 @@
  */
 package domain;
 
+import java.io.Serializable;
+import java.util.Objects;
+
 /**
  *
  * @author User
  */
-public class Mesto {
+public class Mesto implements Serializable {
     private Long postanskiBroj;
     private String naziv;
 
@@ -39,6 +42,32 @@ public class Mesto {
     @Override
     public String toString() {
         return   postanskiBroj + " " + naziv;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 53 * hash + Objects.hashCode(this.postanskiBroj);
+        hash = 53 * hash + Objects.hashCode(this.naziv);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Mesto other = (Mesto) obj;
+        if (!Objects.equals(this.naziv, other.naziv)) {
+            return false;
+        }
+        return Objects.equals(this.postanskiBroj, other.postanskiBroj);
     }
     
     
