@@ -4,6 +4,7 @@
  */
 package controller;
 
+import domain.DestinacijaVoznje;
 import domain.Masinovodja;
 import domain.Mesto;
 import domain.Voz;
@@ -13,6 +14,7 @@ import java.util.List;
 import repository.Repository;
 import repository.db.DbRepository;
 import repository.db.impl.RepositoryDBGeneric;
+import repository.db.impl.RepositoryDestinacijaVoznje;
 import repository.db.impl.RepositoryMasinovodja;
 import repository.db.impl.RepositoryMesto;
 import repository.db.impl.RepositoryVoz;
@@ -30,7 +32,7 @@ public class Controller {
     private final Repository repositoryMesto;
     private final Repository repositoryVoznja;
     private final Repository repositoryVrstaVoza;
-   
+    private final Repository repositoryDestinacijaVoznje;
     private final Repository repositoryGeneric;
 
     private static Controller controller;
@@ -42,7 +44,7 @@ public class Controller {
         this.repositoryMesto= new RepositoryMesto();
         this.repositoryVoznja= new RepositoryVoznja();
         this.repositoryVrstaVoza = new RepositoryVrstaVoza();
- 
+        this.repositoryDestinacijaVoznje = new RepositoryDestinacijaVoznje();
     }
 
     public static Controller getInstance() {
@@ -155,6 +157,10 @@ public class Controller {
         } finally {
             ((DbRepository) repositoryMasinovodja).disconnect();
         }
+    }
+    
+    public List<DestinacijaVoznje> ucitajListuDestinacija () throws Exception {
+           return repositoryDestinacijaVoznje.getAll();
     }
     
 }

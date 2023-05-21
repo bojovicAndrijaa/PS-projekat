@@ -81,6 +81,7 @@ public class RepositoryVoznja implements DbRepository<Voznja>{
             ResultSet rs = statement.executeQuery(sql);
             while (rs.next()) {
                 Voznja voznja = new Voznja();
+                voznja.setVoznjaID(rs.getLong("VoznjaID"));
                 voznja.setTrajanje(rs.getInt("Trajanje"));
                 voznja.setDatum(new java.util.Date(rs.getDate("Datum").getTime()));
                 voznja.setMasinovodja(getMasinovodjaForId(rs.getLong("MasinovodjaID")));

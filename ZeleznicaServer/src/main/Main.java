@@ -5,6 +5,7 @@
 package main;
 
 import controller.Controller;
+import domain.DestinacijaVoznje;
 import domain.Masinovodja;
 import domain.Mesto;
 import domain.Voz;
@@ -27,6 +28,19 @@ import server.Server;
  */
 public class Main {
     public static void main(String[] args) {
-        new Server().startServer();
+        
+        try {
+            Controller c = Controller.getInstance();
+            
+            List<DestinacijaVoznje> destinacije = c.ucitajListuDestinacija();
+            
+            for (DestinacijaVoznje destinacijaVoznje : destinacije) {
+                System.out.println(destinacijaVoznje);
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
     }
 }

@@ -18,5 +18,6 @@ public class Main {
         Voz v = new Voz(1l, "Cira", 0, new Date(1,1,2000), new VrstaVoza(1l,"cira"));
         System.out.println(v);
         
+        
     }
 }
