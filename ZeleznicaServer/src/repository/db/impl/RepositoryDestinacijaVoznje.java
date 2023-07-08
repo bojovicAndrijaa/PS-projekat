@@ -85,7 +85,7 @@ public class RepositoryDestinacijaVoznje implements DbRepository<DestinacijaVozn
         RepositoryVoznja repVoznja = new RepositoryVoznja();
         List<Voznja> voznje = repVoznja.getAll();
         for (Voznja voznja : voznje) {
-            if( id == voznja.getVoznjaID()){
+            if( voznja.getVoznjaID().equals(id)){
                 return voznja;
             }
         }

@@ -10,19 +10,18 @@ package communication;
  */
 public enum Operation {
     KreirajMasinovodju,
-    PretraziMasinovodju,
-    IzmeniPodatkeMasinovodje,
-    UcitajListuMasinovodja,
+    ZapamtiMasinovodju,
     NadjiMasinovodju,
+    UcitajListuMasinovodja,
     KreirajVoz,
-    PretraziVoz,
-    IzmeniPodatkeVoza,
+    ZapamtiVoz,
+    NadjiVoz,
     UcitajListuVozova,
+    UcitajListuMesta,
     KreirajVoznju,
-    PretraziVoznje,
-    IzmeniVoznju,
-    UcitajListuVoznji,
+    ZapamtiVoznju,
     NadjiVoznju,
+    UcitajListuVoznji,
     UcitajListuVrstaVozova,
-    KreirajDestinacijuVoznje
+    KreirajDestinacijuVoznje,
 }

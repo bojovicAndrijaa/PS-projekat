@@ -8,6 +8,12 @@ import communication.Receiver;
 import communication.Request;
 import communication.Response;
 import communication.Sender;
+import controller.Controller;
+import domain.DestinacijaVoznje;
+import domain.Masinovodja;
+import domain.Mesto;
+import domain.Voz;
+import domain.Voznja;
 import java.net.Socket;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -40,17 +46,67 @@ public class ProcessClientsRequests extends Thread {
                 try {
                     switch (request.getOperation()) {
                         case UcitajListuMasinovodja:
-                            
+                            response.setResult(Controller.getInstance().UcitajListuMasinovodja());
                             break;
-                        default:
-                            throw new AssertionError();
+                        case KreirajMasinovodju:
+                            Masinovodja masinovodja = (Masinovodja) request.getArgument();
+                             Controller.getInstance().KreirajMasinovodju(masinovodja);
+                            break;
+                        case KreirajVoz:
+                                Voz voz = (Voz) request.getArgument();
+                            Controller.getInstance().KreirajVoz(voz);
+                            break;
+                        case UcitajListuVozova:
+                            response.setResult(Controller.getInstance().UcitajListuVozova());
+                            break;
+                        case UcitajListuVoznji:
+                            response.setResult(Controller.getInstance().UcitajListuVoznji());
+                            break;    
+                        case UcitajListuVrstaVozova:
+                            response.setResult(Controller.getInstance().UcitajListuVrstiVozova());
+                            break;  
+                        case ZapamtiMasinovodju:
+                            Masinovodja masinovodjaEdit = (Masinovodja) request.getArgument();
+                            Controller.getInstance().zapamtiMasinovodju(masinovodjaEdit);
+                            break;
+//                      case PretraziMasinovodju:
+//                            Voznja voznjaEdit = (Voznja) request.getArgument();
+//                            Controller.getInstance().ZapamtiVoznju(voznjaEdit);
+//                            break;
+//                        case PretraziVoznje:
+//                            Voznja voznjaEdit = (Voznja) request.getArgument();
+//                            Controller.getInstance().ZapamtiVoznju(voznjaEdit);
+//                            break;
+//                        case NadjiVoznju:
+//                            Voznja voznjaEdit = (Voznja) request.getArgument();
+//                            Controller.getInstance().ZapamtiVoznju(voznjaEdit);
+//                            break;
+//                        case KreirajDestinacijuVoznje:
+//                            DestinacijaVoznje destinacija = (DestinacijaVoznje) request.getArgument();
+//                            Controller.getInstance().KreirajDestinaciju(destinacija);
+//                            break;
+                        case KreirajVoznju:
+                            Voznja voznja = (Voznja)request.getArgument();
+                            voznja = Controller.getInstance().KreirajVoznju(voznja);
+                            response.setResult(Controller.getInstance().KreirajVoznju(voznja));
+                            break;
+//                        case DELETE_PRODUCT:
+//                            Product productDelete = (Product) request.getArgument();
+//                            Controller.getInstance().deleteProduct(productDelete);
+//                            break;
+//                        case ADD_INVOICE:
+//                            Invoice invoiceInsert = (Invoice) request.getArgument();
+//                            Controller.getInstance().addInvoice(invoiceInsert);
+//                            response.setResult(invoiceInsert);
+//                            break;
+
                     }
                 } catch (Exception e) {
                     System.out.println("thread.ProcessClientsRequests.run()");
                     e.printStackTrace();
                     response.setException(e);
                 }
-
+                sender.send(response);
             } catch (Exception ex) {
                 Logger.getLogger(ProcessClientsRequests.class.getName()).log(Level.SEVERE, null, ex);
             }

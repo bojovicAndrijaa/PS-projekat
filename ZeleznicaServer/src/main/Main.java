@@ -28,19 +28,7 @@ import server.Server;
  */
 public class Main {
     public static void main(String[] args) {
-        
-        try {
-            Controller c = Controller.getInstance();
-            
-            List<DestinacijaVoznje> destinacije = c.ucitajListuDestinacija();
-            
-            for (DestinacijaVoznje destinacijaVoznje : destinacije) {
-                System.out.println(destinacijaVoznje);
-            }
-        } catch (Exception ex) {
-            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
+          new Server().startServer();
         
     }
 }
