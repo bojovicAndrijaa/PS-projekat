@@ -5,6 +5,7 @@
 package controller;
 
 import domain.DestinacijaVoznje;
+import domain.Korisnik;
 import domain.Masinovodja;
 import domain.Mesto;
 import domain.Voz;
@@ -15,6 +16,7 @@ import repository.Repository;
 import repository.db.DbRepository;
 import repository.db.impl.RepositoryDBGeneric;
 import repository.db.impl.RepositoryDestinacijaVoznje;
+import repository.db.impl.RepositoryKorisnik;
 import repository.db.impl.RepositoryMasinovodja;
 import repository.db.impl.RepositoryMesto;
 import repository.db.impl.RepositoryVoz;
@@ -34,7 +36,8 @@ public class Controller {
     private final Repository repositoryVrstaVoza;
     private final Repository repositoryDestinacijaVoznje;
     private final Repository repositoryGeneric;
-
+    private final Repository repositoryKorisnik;
+    
     private static Controller controller;
 
     private Controller() {
@@ -45,6 +48,7 @@ public class Controller {
         this.repositoryVoznja= new RepositoryVoznja();
         this.repositoryVrstaVoza = new RepositoryVrstaVoza();
         this.repositoryDestinacijaVoznje = new RepositoryDestinacijaVoznje();
+        this.repositoryKorisnik = new RepositoryKorisnik();
     }
 
     public static Controller getInstance() {
@@ -119,7 +123,17 @@ public class Controller {
     public List<DestinacijaVoznje> UcitajListuDestinacija() throws Exception {
         return repositoryDestinacijaVoznje.getAll();
     }
-    
+    public List<Korisnik> logIn(Korisnik korisnik) throws Exception {
+        return repositoryKorisnik.getAll(korisnik);
+    }
+      public List<Masinovodja> nadjiMasinovodju(Masinovodja masinovodja) throws Exception {
+        return repositoryMasinovodja.getAll(masinovodja);
+    }
+     public List<Voz> nadjiVoz(Voz voz) throws Exception {
+        return repositoryVoz.getAll(voz);
+    }
+      
+      
      public void KreirajDestinaciju(DestinacijaVoznje destinacija) throws Exception {
         ((DbRepository) repositoryDestinacijaVoznje).connect();
         try {
@@ -177,6 +191,19 @@ public class Controller {
     }
     public List<DestinacijaVoznje> ucitajListuDestinacija () throws Exception {
            return repositoryDestinacijaVoznje.getAll();
+    }
+     public void ZapamtiVoznju(Voznja voznja) throws Exception {
+        ((DbRepository) repositoryVoznja).connect();
+        try {
+            ((DbRepository) repositoryVoznja).edit(voznja);
+            ((DbRepository) repositoryVoznja).commit();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            ((DbRepository) repositoryVoznja).rollback();
+            throw e;
+        } finally {
+            ((DbRepository) repositoryVoznja).disconnect();
+        }
     }
     
 //    public List<Masinovodja> nadjiMasinovodju(String ime,String prezime) throws Exception{

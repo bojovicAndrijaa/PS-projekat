@@ -7,7 +7,7 @@ package domain;
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
-import java.util.Date;
+
 
 /**
  *
@@ -79,7 +79,7 @@ public class Voznja  implements Serializable{
     @Override
     public String toString() {
         return "Masinovodja: " + masinovodja.getIme()+ " " + masinovodja.getPrezime() + ", upravlja vozom: " + voz.getNazivVoza()
-                + ", dana: " + new SimpleDateFormat("dd.MM.yyyy.").format(datum);
+                + ", dana: " + datum;
     }
     
     

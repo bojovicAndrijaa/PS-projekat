@@ -33,7 +33,7 @@
                           <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
                           <Component id="jBtnIzmeni" min="-2" pref="169" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
-                          <Component id="jBtnPretragaMasinovodje" min="-2" pref="154" max="-2" attributes="0"/>
+                          <Component id="jBtnPretragaMasinovodje" min="-2" pref="174" max="-2" attributes="0"/>
                       </Group>
                       <Component id="jScrollPane1" min="-2" pref="586" max="-2" attributes="0"/>
                   </Group>

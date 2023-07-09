@@ -7,6 +7,7 @@ package form;
 import communication.Communication;
 import domain.Masinovodja;
 import java.util.List;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 /**
@@ -185,6 +186,8 @@ public class FrmIzmeniMasinovodju extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(this, "Uspenso izmenjen radni staz masinovodje");
             cbMasinovodje.removeAllItems();
             pripremiMasinovodje();
+               this.dispose();
+             new FrmMasinovodja(new JFrame(), true).setVisible(true);
         } catch (NumberFormatException e) {
             System.out.println(e.getMessage());
             JOptionPane.showMessageDialog(this, "Radni staz masinovodje mora biti broj");

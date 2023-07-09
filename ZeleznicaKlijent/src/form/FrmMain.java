@@ -4,14 +4,18 @@
  */
 package form;
 
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
+import threads.DateTimeThread;
 
 /**
  *
  * @author User
  */
 public class FrmMain extends javax.swing.JFrame {
-
+    String username;
     /**
      * Creates new form FrmMain
      */
@@ -19,7 +23,17 @@ public class FrmMain extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         initComponents();
         setExtendedState(JFrame.MAXIMIZED_BOTH);
+        setTitle("Pracenje rada zeleznice");
 //        setTime();
+    }
+    public FrmMain(String korisnik){
+        username = korisnik;
+        setLocationRelativeTo(null);
+        initComponents();
+        setExtendedState(JFrame.MAXIMIZED_BOTH);
+        setTitle("Pracenje rada zeleznice");
+        setTime();
+        prepare();
     }
 
     /**
@@ -31,6 +45,11 @@ public class FrmMain extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        lblDobrodosli = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        lblKorisnik = new javax.swing.JLabel();
+        lblDatumVreme = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jFrmMasinovodja = new javax.swing.JMenuItem();
@@ -40,6 +59,22 @@ public class FrmMain extends javax.swing.JFrame {
         jMenuItem2 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        lblDobrodosli.setFont(new java.awt.Font("Trebuchet MS", 1, 24)); // NOI18N
+        lblDobrodosli.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblDobrodosli.setText("Dobro došli!");
+        lblDobrodosli.setToolTipText("");
+        lblDobrodosli.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+
+        jLabel2.setFont(new java.awt.Font("Trebuchet MS", 1, 18)); // NOI18N
+        jLabel2.setText("Datum");
+
+        jLabel3.setFont(new java.awt.Font("Trebuchet MS", 1, 18)); // NOI18N
+        jLabel3.setText("Ulogovani koristnik:");
+
+        lblKorisnik.setFont(new java.awt.Font("Trebuchet MS", 1, 18)); // NOI18N
+
+        lblDatumVreme.setFont(new java.awt.Font("Trebuchet MS", 1, 18)); // NOI18N
 
         jMenu1.setText("Mašinovođa");
 
@@ -83,11 +118,33 @@ public class FrmMain extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 713, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel3)
+                .addGap(31, 31, 31)
+                .addComponent(lblKorisnik, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(23, 23, 23)
+                .addComponent(lblDatumVreme, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(357, 357, 357)
+                .addComponent(lblDobrodosli, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(357, 357, 357))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 418, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(28, 28, 28)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblKorisnik, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblDatumVreme, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(146, 146, 146)
+                .addComponent(lblDobrodosli, javax.swing.GroupLayout.DEFAULT_SIZE, 43, Short.MAX_VALUE)
+                .addGap(163, 163, 163))
         );
 
         pack();
@@ -114,11 +171,34 @@ public class FrmMain extends javax.swing.JFrame {
    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem jFrmMasinovodja;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JLabel lblDatumVreme;
+    private javax.swing.JLabel lblDobrodosli;
+    private javax.swing.JLabel lblKorisnik;
     // End of variables declaration//GEN-END:variables
+    private void setTime() {
+        DateTimeThread dateTime= new DateTimeThread(lblDatumVreme);
+        dateTime.start();
+    }
+    private void prepare(){
+        lblKorisnik.setText(username);
+//        Dimension dimenzijeEkrana = Toolkit.getDefaultToolkit().getScreenSize();
+//        int sirinaEkrana = dimenzijeEkrana.width;
+//        int visinaEkrana = dimenzijeEkrana.height;
+//        int sirinaProzora = this.getWidth();
+//        int visinaProzora = this.getHeight();
+//        int x = (sirinaEkrana - sirinaProzora) / 2;
+//        int y = (visinaEkrana - visinaProzora) / 2;
+//        lblDobrodosli.setHorizontalAlignment(JLabel.CENTER);
+//        lblDobrodosli.setLocation(x, y);
+
+        
+    }
 }

@@ -24,5 +24,6 @@ public enum Operation {
     UcitajListuVoznji,
     UcitajListuVrstaVozova,
     KreirajDestinacijuVoznje,
-    UcitajListuDestinacija
+    UcitajListuDestinacija,
+    LogIn
 }

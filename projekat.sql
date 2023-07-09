@@ -16,21 +16,27 @@ CREATE DATABASE /*!32312 IF NOT EXISTS*/`projekat` /*!40100 DEFAULT CHARACTER SE
 
 USE `projekat`;
 
-/*Table structure for table `destinacija voznje` */
+/*Table structure for table `destinacijavoznje` */
 
-DROP TABLE IF EXISTS `destinacija voznje`;
+DROP TABLE IF EXISTS `destinacijavoznje`;
 
-CREATE TABLE `destinacija voznje` (
+CREATE TABLE `destinacijavoznje` (
   `VoznjaID` bigint unsigned NOT NULL,
   `PostanskiBroj` bigint unsigned NOT NULL,
-  `RedniBroj` int NOT NULL,
+  `RedniBroj` int NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (`VoznjaID`,`RedniBroj`),
   KEY `PostanskiBroj` (`PostanskiBroj`),
-  CONSTRAINT `destinacija voznje_ibfk_1` FOREIGN KEY (`PostanskiBroj`) REFERENCES `mesto` (`PostanskiBroj`) ON UPDATE RESTRICT,
-  CONSTRAINT `destinacija voznje_ibfk_2` FOREIGN KEY (`VoznjaID`) REFERENCES `voznja` (`VoznjaID`) ON UPDATE RESTRICT
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  KEY `RedniBroj` (`RedniBroj`),
+  CONSTRAINT `destinacijavoznje_ibfk_1` FOREIGN KEY (`PostanskiBroj`) REFERENCES `mesto` (`PostanskiBroj`) ON UPDATE RESTRICT,
+  CONSTRAINT `destinacijavoznje_ibfk_2` FOREIGN KEY (`VoznjaID`) REFERENCES `voznja` (`VoznjaID`) ON UPDATE RESTRICT
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
-/*Data for the table `destinacija voznje` */
+/*Data for the table `destinacijavoznje` */
+
+insert  into `destinacijavoznje`(`VoznjaID`,`PostanskiBroj`,`RedniBroj`) values 
+(1,21000,3),
+(145,31300,1),
+(4444,34000,2);
 
 /*Table structure for table `masinovodja` */
 
@@ -43,13 +49,21 @@ CREATE TABLE `masinovodja` (
   `DatumRodjenja` date NOT NULL,
   `RadniStaz` int NOT NULL,
   PRIMARY KEY (`MasinovodjaID`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=112234 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 /*Data for the table `masinovodja` */
 
 insert  into `masinovodja`(`MasinovodjaID`,`Ime`,`Prezime`,`DatumRodjenja`,`RadniStaz`) values 
 (1,'Gojko','Perovic','1968-11-05',10),
-(2,'Zoran','Jevtic','1918-08-01',40);
+(2,'Zoran','Jevtic','1918-08-01',40),
+(3,'Marko','Markovic','2023-05-18',13),
+(4,'Milenko','Milanovic','1996-10-09',5),
+(5,'Boris','Mandic','2000-11-17',1),
+(6,'Filip','Novkovic','2000-07-26',2),
+(7,'Jovan','Jovanovic','1970-07-09',43),
+(7458,'Milovan','Popadic','2023-07-04',38),
+(110700,'Andrija','Bojovic','3900-08-11',7),
+(112233,'Mirko','Filipovic','1983-07-14',16);
 
 /*Table structure for table `mesto` */
 
@@ -65,7 +79,10 @@ CREATE TABLE `mesto` (
 
 insert  into `mesto`(`PostanskiBroj`,`Naziv`) values 
 (11000,'Beograd'),
-(31300,'Prijepolje');
+(21000,'Novi Sad'),
+(31000,'Uzice'),
+(31300,'Prijepolje'),
+(34000,'Kragujevac');
 
 /*Table structure for table `voz` */
 
@@ -79,14 +96,17 @@ CREATE TABLE `voz` (
   `VrstaVoza` bigint unsigned NOT NULL,
   PRIMARY KEY (`VozID`),
   KEY `VrstaVoza` (`VrstaVoza`),
-  CONSTRAINT `voz_ibfk_1` FOREIGN KEY (`VrstaVoza`) REFERENCES `vrsta voza` (`VrstaVozaID`) ON UPDATE RESTRICT
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  CONSTRAINT `voz_ibfk_1` FOREIGN KEY (`VrstaVoza`) REFERENCES `vrstavoza` (`VrstaVozaID`) ON UPDATE RESTRICT
+) ENGINE=InnoDB AUTO_INCREMENT=988 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 /*Data for the table `voz` */
 
 insert  into `voz`(`VozID`,`NazivVoza`,`BrojSedista`,`GodinaProizvodnje`,`VrstaVoza`) values 
 (1,'Cira',50,'1912-01-07',3),
-(2,'Soko',150,'2022-09-01',1);
+(2,'Soko',200,'2022-09-01',1),
+(77,'Lokomotiva',48,'1975-07-17',2),
+(123,'Plavi voz',1005,'3820-02-01',1),
+(987,'Jastreb',125,'2023-07-06',3);
 
 /*Table structure for table `voznja` */
 
@@ -95,7 +115,7 @@ DROP TABLE IF EXISTS `voznja`;
 CREATE TABLE `voznja` (
   `VoznjaID` bigint unsigned NOT NULL,
   `Trajanje` int NOT NULL,
-  `Datum` date NOT NULL,
+  `Datum` datetime NOT NULL,
   `MasinovodjaID` bigint unsigned NOT NULL,
   `VozID` bigint unsigned NOT NULL,
   PRIMARY KEY (`VoznjaID`),
@@ -107,19 +127,24 @@ CREATE TABLE `voznja` (
 
 /*Data for the table `voznja` */
 
-/*Table structure for table `vrsta voza` */
+insert  into `voznja`(`VoznjaID`,`Trajanje`,`Datum`,`MasinovodjaID`,`VozID`) values 
+(1,50,'2023-05-05 09:08:00',5,2),
+(145,70,'2023-02-01 00:00:00',110700,123),
+(4444,1,'2022-01-15 17:18:45',6,2);
 
-DROP TABLE IF EXISTS `vrsta voza`;
+/*Table structure for table `vrstavoza` */
 
-CREATE TABLE `vrsta voza` (
+DROP TABLE IF EXISTS `vrstavoza`;
+
+CREATE TABLE `vrstavoza` (
   `VrstaVozaID` bigint unsigned NOT NULL AUTO_INCREMENT,
   `NazivVrste` varchar(200) NOT NULL,
   PRIMARY KEY (`VrstaVozaID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
-/*Data for the table `vrsta voza` */
+/*Data for the table `vrstavoza` */
 
-insert  into `vrsta voza`(`VrstaVozaID`,`NazivVrste`) values 
+insert  into `vrstavoza`(`VrstaVozaID`,`NazivVrste`) values 
 (1,'Medjugradski'),
 (2,'Ekspresni'),
 (3,'Regionalni');

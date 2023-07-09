@@ -9,6 +9,7 @@ import domain.Voz;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 /**
@@ -195,6 +196,8 @@ public class FrmIzmeniVoz extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(this, "Uspenso izmenjen broj sedista voza");
             cbVozovi.removeAllItems();
             prepareIzmena();
+            this.dispose();
+            new FrmVoz(new JFrame(), true).setVisible(true);
         } catch (NumberFormatException e) {
             System.out.println(e.getMessage());
             JOptionPane.showMessageDialog(this, "Broj sedista voza mora biti broj");

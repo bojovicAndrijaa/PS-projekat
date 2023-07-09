@@ -4,6 +4,20 @@
  */
 package form;
 
+import communication.Communication;
+import domain.DestinacijaVoznje;
+import domain.Mesto;
+import domain.Voznja;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
+import javax.swing.table.TableModel;
+import tables.VoznjaTableModel;
+
 /**
  *
  * @author User
@@ -16,6 +30,13 @@ public class FrmPretraziVoznju extends javax.swing.JDialog {
     public FrmPretraziVoznju(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        setTitle("Pretrazi voznju");
+        setLocationRelativeTo(null);
+   
+        prepareTable(null, null);
+        prepareComponents();
+        
+        
     }
 
     /**
@@ -27,64 +48,301 @@ public class FrmPretraziVoznju extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        btnPretaziVoznju = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        JlMesta = new javax.swing.JList<>();
+        tbMesto = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tableVoznje = new javax.swing.JTable();
+        jLabel2 = new javax.swing.JLabel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+
+        btnPretaziVoznju.setFont(new java.awt.Font("Trebuchet MS", 1, 14)); // NOI18N
+        btnPretaziVoznju.setText("PRETRAZI VOZNJU");
+        btnPretaziVoznju.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPretaziVoznjuActionPerformed(evt);
+            }
+        });
+
+        JlMesta.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        JlMesta.setEnabled(false);
+        JlMesta.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                JlMestaMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(JlMesta);
+
+        tbMesto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tbMestoActionPerformed(evt);
+            }
+        });
+        tbMesto.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                tbMestoKeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                tbMestoKeyTyped(evt);
+            }
+        });
+
+        jLabel1.setFont(new java.awt.Font("Trebuchet MS", 1, 14)); // NOI18N
+        jLabel1.setText("MESTO");
+
+        tableVoznje.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane2.setViewportView(tableVoznje);
+
+        jLabel2.setFont(new java.awt.Font("Trebuchet MS", 1, 14)); // NOI18N
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setText("Pretraga voznji po mestu");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(31, 31, 31)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(196, 196, 196)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(29, 29, 29)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(tbMesto, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(57, 57, 57)
+                        .addComponent(btnPretaziVoznju))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 674, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(16, 16, 16)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 5, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(tbMesto, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel1))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(33, 33, 33))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(30, 30, 30)
+                        .addComponent(btnPretaziVoznju, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 91, Short.MAX_VALUE)))
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(115, 115, 115))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnPretaziVoznjuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPretaziVoznjuActionPerformed
+
+        try {
+            String nazivMesta = tbMesto.getText();
+         
+            if(nazivMesta.isEmpty()){
+                JOptionPane.showConfirmDialog(this, "Morate izbarati grad za koji pretrazujete");
+            }
+
+            pretraziVoznjeZaZadatiKriterijum(nazivMesta);
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+
+    }//GEN-LAST:event_btnPretaziVoznjuActionPerformed
+
+    private void JlMestaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JlMestaMouseClicked
+        String grad= String.valueOf(JlMesta.getSelectedValue());
+        tbMesto.setText(grad);
+    }//GEN-LAST:event_JlMestaMouseClicked
+
+    private void tbMestoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tbMestoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tbMestoActionPerformed
+
+    private void tbMestoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tbMestoKeyReleased
+        // TODO add your handling code here:
+        DefaultListModel<String> listModel = new DefaultListModel<>();
+        JlMesta.setModel(listModel);
+        JlMesta.setEnabled(true);
+        List<Mesto> mesta=new ArrayList<>();
+        try {
+            mesta = Communication.getInstance().ucitajListuMesta();
+            for (Mesto mesto : mesta) {
+                listModel.addElement(mesto.getNaziv());
+            }
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this, "Error: " + ex.getMessage(), "GRESKA PRILOKOM UCITAVNJA MESTA", JOptionPane.ERROR_MESSAGE);
+        }
+
+        String prefix = tbMesto.getText().toLowerCase();
+        List<String> filteredList = new ArrayList<>();
+
+        // Filtriranje elemenata koji počinju na uneti prefiks
+        for (int i = 0; i < listModel.getSize(); i++) {
+            String element = listModel.getElementAt(i);
+            if (element.toLowerCase().startsWith(prefix)) {
+                filteredList.add(element);
+            }
+        }
+        // Ažuriranje prikazane liste rezultata
+        JlMesta.setListData(filteredList.toArray(new String[0]));
+
+    }//GEN-LAST:event_tbMestoKeyReleased
+
+    private void tbMestoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tbMestoKeyTyped
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_tbMestoKeyTyped
+
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FrmPretraziVoznju.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FrmPretraziVoznju.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FrmPretraziVoznju.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FrmPretraziVoznju.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
 
-        /* Create and display the dialog */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                FrmPretraziVoznju dialog = new FrmPretraziVoznju(new javax.swing.JFrame(), true);
-                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                    @Override
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                        System.exit(0);
-                    }
-                });
-                dialog.setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JList<String> JlMesta;
+    private javax.swing.JButton btnPretaziVoznju;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTable tableVoznje;
+    private javax.swing.JTextField tbMesto;
     // End of variables declaration//GEN-END:variables
+
+     private void prepareTable(Mesto mesto, Date datum) {
+       List<Voznja> voznje=new ArrayList<>();
+       List<Voznja> voznjePom=new ArrayList<>();
+       List<Mesto> mesta=new ArrayList<>();
+       TableModel model;
+        try {
+            
+            
+            if(mesto==null && datum==null){
+            model=new VoznjaTableModel(voznje,mesta);
+            tableVoznje.setModel(model);
+            }else{
+                for (Voznja voznja : voznje) {
+                    
+                }
+            }
+            model=new VoznjaTableModel(voznje,mesta);
+            tableVoznje.setModel(model);
+        } catch (Exception ex) {
+            Logger.getLogger(FrmMain.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
+        
+        
+    }
+    private void prepareComponents() {
+        try {
+            List<Voznja> voznje = Communication.getInstance().ucitajListuVoznji();
+            List<Mesto> mesta = kreirajMestaPoRasporeduVoznji(voznje);
+            TableModel model = new VoznjaTableModel(voznje,mesta);
+            tableVoznje.setModel(model);
+            
+        
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    private List<Mesto> ucitajListuMesta() {
+        try {
+            return (List<Mesto>)Communication.getInstance().ucitajListuMesta();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            return null;
+        }
+    }
+
+    private List<DestinacijaVoznje> ucitajListuDestinacija() {
+        try {
+            return (List<DestinacijaVoznje>)Communication.getInstance().UcitajListuDestinacija();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            return null;
+        }
+    }
+    private List<Mesto> kreirajMestaPoRasporeduVoznji(List<Voznja> voznje) {
+        List<Mesto> mesta = new ArrayList<>();
+        for (Voznja voznja : voznje) {
+            if(GetMestoFromDestinacija(voznja.getVoznjaID())!=null){
+                mesta.add(GetMestoFromDestinacija(voznja.getVoznjaID()));
+            }
+        }
+        return mesta;
+    }
+    
+    private Mesto GetMestoFromDestinacija(long voznjaID){
+        List<DestinacijaVoznje> destinacije =  ucitajListuDestinacija();
+        for (DestinacijaVoznje destinacijaVoznje : destinacije) {
+            if(destinacijaVoznje.getVoznja().getVoznjaID() == voznjaID){
+                Mesto mesto =destinacijaVoznje.getMesto();
+                mesto.setNaziv(getNazivMesta(mesto.getPostanskiBroj()));
+                return mesto;
+            }
+        }
+        return null;
+    }
+    private String getNazivMesta(long postanskiBroj){
+        List<Mesto> mesta = ucitajListuMesta();
+        for (Mesto mesto : mesta) {
+            if(mesto.getPostanskiBroj()== postanskiBroj){
+                return mesto.getNaziv();
+            }
+        }
+        return null;
+    }
+
+    private void pretraziVoznjeZaZadatiKriterijum(String nazivMesta) {
+         List<Voznja> voznje;
+         List<Voznja> voznjePretrazene = new ArrayList<>();
+         List<Mesto> mestaPretrazena = new ArrayList<>();
+        try {
+            voznje = Communication.getInstance().ucitajListuVoznji();
+            List<Mesto> mesta = kreirajMestaPoRasporeduVoznji(voznje);
+            for (int i = 0; i < voznje.size(); i++) {
+                if(mesta.get(i).getNaziv().equals(nazivMesta)){
+                    voznjePretrazene.add(voznje.get(i));
+                    mestaPretrazena.add(mesta.get(i));
+                }
+            }
+            
+            TableModel model = new VoznjaTableModel(voznjePretrazene,mestaPretrazena);
+            tableVoznje.setModel(model);
+            
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+            
+            
+        
+    }
+
 }

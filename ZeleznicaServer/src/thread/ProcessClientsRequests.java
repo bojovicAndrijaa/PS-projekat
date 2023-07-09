@@ -10,6 +10,7 @@ import communication.Response;
 import communication.Sender;
 import controller.Controller;
 import domain.DestinacijaVoznje;
+import domain.Korisnik;
 import domain.Masinovodja;
 import domain.Mesto;
 import domain.Voz;
@@ -52,6 +53,10 @@ public class ProcessClientsRequests extends Thread {
                             Masinovodja masinovodja = (Masinovodja) request.getArgument();
                              Controller.getInstance().kreirajMasinovodju(masinovodja);
                             break;
+                        case NadjiMasinovodju:
+                            Masinovodja masinovodja1 = (Masinovodja) request.getArgument();
+                            response.setResult(Controller.getInstance().nadjiMasinovodju(masinovodja1));
+                            break;
                         case KreirajVoz:
                                 Voz voz = (Voz) request.getArgument();
                             Controller.getInstance().kreirajVoz(voz);
@@ -59,6 +64,10 @@ public class ProcessClientsRequests extends Thread {
                         case UcitajListuVozova:
                             response.setResult(Controller.getInstance().ucitajListuVozova());
                             break;
+                        case NadjiVoz:
+                            Voz voz1 = (Voz) request.getArgument();
+                            response.setResult(Controller.getInstance().nadjiVoz(voz1));
+                            break;    
                         case UcitajListuVoznji:
                             response.setResult(Controller.getInstance().ucitajListuVoznji());
                             break;    
@@ -80,29 +89,21 @@ public class ProcessClientsRequests extends Thread {
                             DestinacijaVoznje destinacija = (DestinacijaVoznje) request.getArgument();
                             Controller.getInstance().KreirajDestinaciju(destinacija);
                             break;
-//                      case NadjiMasinovodju:
-////                            Voznja voznjaEdit = (Voznja) request.getArgument();
-//                            response.setResult(Controller.getInstance().nadjiMasinovodju());
-//                            break;
-//                      case PretraziVoznje:
-//                            Voznja voznjaEdit = (Voznja) request.getArgument();
-//                            Controller.getInstance().ZapamtiVoznju(voznjaEdit);
-//                            break;
-//                        case NadjiVoznju:
-//                            Voznja voznjaEdit = (Voznja) request.getArgument();
-//                            Controller.getInstance().ZapamtiVoznju(voznjaEdit);
-//                            break;
-//                        case KreirajDestinacijuVoznje:
-//                            DestinacijaVoznje destinacija = (DestinacijaVoznje) request.getArgument();
-//                            Controller.getInstance().KreirajDestinaciju(destinacija);
-//                            break;
                         case KreirajVoznju:
                             Voznja voznja = (Voznja)request.getArgument();
                             response.setResult(Controller.getInstance().kreirajVoznju(voznja));
                             break;
                         case UcitajListuDestinacija:
                             response.setResult(Controller.getInstance().UcitajListuDestinacija());
-                            break;  
+                            break; 
+                        case ZapamtiVoznju:
+                            Voznja voznjaEdit = (Voznja) request.getArgument();
+                            Controller.getInstance().ZapamtiVoznju(voznjaEdit);
+                            break;
+                        case LogIn:
+                            Korisnik korisnik = (Korisnik)request.getArgument();
+                            response.setResult(Controller.getInstance().logIn(korisnik));
+                            break;   
 //                        case DELETE_PRODUCT:
 //                            Product productDelete = (Product) request.getArgument();
 //                            Controller.getInstance().deleteProduct(productDelete);

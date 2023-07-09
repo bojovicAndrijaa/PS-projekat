@@ -122,7 +122,32 @@ public class RepositoryMasinovodja implements DbRepository<Masinovodja>{
 
     @Override
     public List<Masinovodja> getAll(Masinovodja param) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+          List<Masinovodja> masinovodje = new ArrayList<>();
+         try {
+            String sql = "SELECT * FROM masinovodja WHERE Ime = ? AND Prezime = ?" ;
+            
+            Connection conn = DbConnectionFactory.getInstance().getConnection();
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString(1, param.getIme());
+            ps.setString(2,param.getPrezime());
+            
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                Masinovodja masinovodja = new Masinovodja();
+                masinovodja.setMasinovodjaID(rs.getLong("MasinovodjaID"));
+                masinovodja.setIme(rs.getString("Ime"));
+                masinovodja.setPrezime(rs.getString("Prezime"));
+                masinovodja.setDatumRodjenja(rs.getDate("DatumRodjenja"));
+                masinovodja.setRadniStaz(rs.getInt("RadniStaz"));
+                masinovodje.add(masinovodja);
+            }
+            rs.close();
+            ps.close();
+            return masinovodje;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return null;
+        }
     }
     
 }

@@ -229,7 +229,7 @@ public class FrmKreirajVoz extends javax.swing.JDialog {
 
     private boolean postoji(Long vozId) {
           try {
-            List<Voz> vozovi = Communication.getInstance().nadjiVoz(vozId);
+            List<Voz> vozovi = Communication.getInstance().nadjiVoz(new Voz(vozId,null,0,null,null));
             if(vozovi != null )return true;
             else return false;
         } catch (Exception ex) {

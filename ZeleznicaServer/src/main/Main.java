@@ -4,22 +4,8 @@
  */
 package main;
 
-import controller.Controller;
-import domain.DestinacijaVoznje;
-import domain.Masinovodja;
-import domain.Mesto;
-import domain.Voz;
-import domain.Voznja;
-import domain.VrstaVoza;
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.Month;
-import java.util.Date;
-import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import repository.db.impl.RepositoryMasinovodja;
+import form.FrmSettings;
+import javax.swing.JFrame;
 import server.Server;
 
 /**
@@ -28,7 +14,7 @@ import server.Server;
  */
 public class Main {
     public static void main(String[] args) {
-          new Server().startServer();
+         new FrmSettings(new JFrame(), true).setVisible(true);
         
     }
 }

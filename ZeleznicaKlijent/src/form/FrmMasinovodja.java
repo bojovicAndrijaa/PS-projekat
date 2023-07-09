@@ -99,7 +99,7 @@ public class FrmMasinovodja extends javax.swing.JDialog {
                             .addGap(49, 49, 49)
                             .addComponent(jBtnIzmeni, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jBtnPretragaMasinovodje, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jBtnPretragaMasinovodje, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 586, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(29, Short.MAX_VALUE))
         );
@@ -129,12 +129,13 @@ public class FrmMasinovodja extends javax.swing.JDialog {
 
     private void jBtnIzmeniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnIzmeniActionPerformed
         // TODO add your handling code here:
-         new FrmIzmeniMasinovodju(new JFrame(),true).setVisible(true);
          this.dispose();
+         new FrmIzmeniMasinovodju(new JFrame(),true).setVisible(true);
     }//GEN-LAST:event_jBtnIzmeniActionPerformed
 
     private void jBtnPretragaMasinovodjeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnPretragaMasinovodjeActionPerformed
         // TODO add your handling code here:
+        this.dispose();
         new FrmNadjiMasinovodju(new JFrame(), true).setVisible(true);
     }//GEN-LAST:event_jBtnPretragaMasinovodjeActionPerformed
 

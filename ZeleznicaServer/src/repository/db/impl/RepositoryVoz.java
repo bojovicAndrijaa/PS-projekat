@@ -4,6 +4,7 @@
  */
 package repository.db.impl;
 
+import domain.Masinovodja;
 import domain.Voz;
 import domain.VrstaVoza;
 import java.sql.Connection;
@@ -24,7 +25,34 @@ public class RepositoryVoz implements DbRepository<Voz>{
     
     @Override
     public List<Voz> getAll(Voz param) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        try {
+            String sql="Select * from Voz WHERE VozID = ?";
+            List<Voz> vozovi = new ArrayList<>();
+            
+            Connection conn = DbConnectionFactory.getInstance().getConnection();
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setLong(1, param.getVozID());
+            
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                Voz voz = new Voz();
+                voz.setVozID(rs.getLong("VozID"));
+                voz.setNazivVoza(rs.getString("NazivVoza"));
+                voz.setBrojSedista(rs.getInt("BrojSedista"));
+                voz.setGodinaProizvodnje(rs.getDate("GodinaProizvodnje"));
+                voz.setVrstaVozaID(getVrstaVozaForIDVrste(rs.getLong("VrstaVoza")));
+                vozovi.add(voz);
+            }
+            rs.close();
+            ps.close();
+            if(vozovi.size() != 0) return vozovi;
+            return null;
+            
+           
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return null;
+        }
     }
     
     @Override

@@ -5,8 +5,10 @@
 package main;
 
 import domain.*;
+import form.FrmLogin;
 import form.FrmMain;
 import java.util.Date;
+import javax.swing.JFrame;
 
 /**
  *
@@ -14,7 +16,7 @@ import java.util.Date;
  */
 public class Main {
     public static void main(String[] args) {
-       new FrmMain().setVisible(true);
+       new FrmLogin(new JFrame(), true).setVisible(true);
      
     }
 }

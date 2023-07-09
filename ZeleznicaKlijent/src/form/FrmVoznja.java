@@ -79,6 +79,11 @@ public class FrmVoznja extends javax.swing.JDialog {
         });
 
         btnPretrazi.setText("Pretrazi voznje");
+        btnPretrazi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPretraziActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -134,6 +139,12 @@ public class FrmVoznja extends javax.swing.JDialog {
         this.dispose();
         new FrmIzmeniVoznju(new JFrame(), true).setVisible(true);
     }//GEN-LAST:event_btnIzmeniVoznjuActionPerformed
+
+    private void btnPretraziActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPretraziActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+        new FrmPretraziVoznju(new JFrame(), true).setVisible(true);
+    }//GEN-LAST:event_btnPretraziActionPerformed
 
     /**
      * @param args the command line arguments
