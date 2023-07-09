@@ -20,7 +20,8 @@ public class FrmNadjiMasinovodju extends javax.swing.JDialog {
     public FrmNadjiMasinovodju(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-     
+        setLocationRelativeTo(null);
+        setTitle("Nadji masinovodju");
     }
 
     /**

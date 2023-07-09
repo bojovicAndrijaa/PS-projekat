@@ -6,6 +6,7 @@ package domain;
 
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 /**
@@ -15,14 +16,14 @@ import java.util.Date;
 public class Voznja  implements Serializable{
     private Long voznjaID;
     private int trajanje;
-    private Date datum;
+    private LocalDateTime datum;
     private Masinovodja masinovodja;
     private Voz voz;
     
     public Voznja() {
     }
 
-    public Voznja(Long voznjaID, int trajanje, Date datum, Masinovodja masinovodja, Voz voz) {
+    public Voznja(Long voznjaID, int trajanje, LocalDateTime datum, Masinovodja masinovodja, Voz voz) {
         this.voznjaID = voznjaID;
         this.trajanje = trajanje;
         this.datum = datum;
@@ -32,11 +33,11 @@ public class Voznja  implements Serializable{
 
    
 
-    public Date getDatum() {
+    public LocalDateTime getDatum() {
         return datum;
     }
 
-    public void setDatum(Date datum) {
+    public void setDatum(LocalDateTime datum) {
         this.datum = datum;
     }
 

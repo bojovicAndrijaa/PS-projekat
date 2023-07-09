@@ -46,34 +46,45 @@ public class ProcessClientsRequests extends Thread {
                 try {
                     switch (request.getOperation()) {
                         case UcitajListuMasinovodja:
-                            response.setResult(Controller.getInstance().UcitajListuMasinovodja());
+                            response.setResult(Controller.getInstance().ucitajListuMasinovodja());
                             break;
                         case KreirajMasinovodju:
                             Masinovodja masinovodja = (Masinovodja) request.getArgument();
-                             Controller.getInstance().KreirajMasinovodju(masinovodja);
+                             Controller.getInstance().kreirajMasinovodju(masinovodja);
                             break;
                         case KreirajVoz:
                                 Voz voz = (Voz) request.getArgument();
-                            Controller.getInstance().KreirajVoz(voz);
+                            Controller.getInstance().kreirajVoz(voz);
                             break;
                         case UcitajListuVozova:
-                            response.setResult(Controller.getInstance().UcitajListuVozova());
+                            response.setResult(Controller.getInstance().ucitajListuVozova());
                             break;
                         case UcitajListuVoznji:
-                            response.setResult(Controller.getInstance().UcitajListuVoznji());
+                            response.setResult(Controller.getInstance().ucitajListuVoznji());
                             break;    
                         case UcitajListuVrstaVozova:
-                            response.setResult(Controller.getInstance().UcitajListuVrstiVozova());
+                            response.setResult(Controller.getInstance().ucitajListuVrstiVozova());
                             break;  
                         case ZapamtiMasinovodju:
                             Masinovodja masinovodjaEdit = (Masinovodja) request.getArgument();
                             Controller.getInstance().zapamtiMasinovodju(masinovodjaEdit);
                             break;
-//                      case PretraziMasinovodju:
-//                            Voznja voznjaEdit = (Voznja) request.getArgument();
-//                            Controller.getInstance().ZapamtiVoznju(voznjaEdit);
+                          case ZapamtiVoz:
+                            Voz vozEdit = (Voz) request.getArgument();
+                            Controller.getInstance().zapamtiVoz(vozEdit);
+                            break;
+                        case UcitajListuMesta:
+                            response.setResult(Controller.getInstance().ucitajListuMesta());
+                            break; 
+                        case KreirajDestinacijuVoznje:
+                            DestinacijaVoznje destinacija = (DestinacijaVoznje) request.getArgument();
+                            Controller.getInstance().KreirajDestinaciju(destinacija);
+                            break;
+//                      case NadjiMasinovodju:
+////                            Voznja voznjaEdit = (Voznja) request.getArgument();
+//                            response.setResult(Controller.getInstance().nadjiMasinovodju());
 //                            break;
-//                        case PretraziVoznje:
+//                      case PretraziVoznje:
 //                            Voznja voznjaEdit = (Voznja) request.getArgument();
 //                            Controller.getInstance().ZapamtiVoznju(voznjaEdit);
 //                            break;
@@ -87,9 +98,11 @@ public class ProcessClientsRequests extends Thread {
 //                            break;
                         case KreirajVoznju:
                             Voznja voznja = (Voznja)request.getArgument();
-                            voznja = Controller.getInstance().KreirajVoznju(voznja);
-                            response.setResult(Controller.getInstance().KreirajVoznju(voznja));
+                            response.setResult(Controller.getInstance().kreirajVoznju(voznja));
                             break;
+                        case UcitajListuDestinacija:
+                            response.setResult(Controller.getInstance().UcitajListuDestinacija());
+                            break;  
 //                        case DELETE_PRODUCT:
 //                            Product productDelete = (Product) request.getArgument();
 //                            Controller.getInstance().deleteProduct(productDelete);

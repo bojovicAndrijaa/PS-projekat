@@ -65,7 +65,7 @@ public class MasinovodjaTableModel extends AbstractTableModel{
 
     @Override
     public int getColumnCount() {
-        return 6;
+        return 5;
     }
 
     @Override

@@ -37,7 +37,7 @@
       <Properties>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-            <TitledBorder title="Izmeni ma&#x161;inovo&#x111;u">
+            <TitledBorder title="Izmeni voz">
               <Font PropertyName="font" name="Trebuchet MS" size="12" style="1"/>
             </TitledBorder>
           </Border>
@@ -47,38 +47,33 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="145" max="-2" attributes="0"/>
-                  <Component id="btnIzmeniMasinovodju" min="-2" pref="154" max="-2" attributes="0"/>
+                  <Component id="btnIzmeniVoz" min="-2" pref="154" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
               <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace pref="32" max="32767" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <Component id="jLabel6" min="-2" pref="143" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="cbMasinovodje" min="-2" pref="262" max="-2" attributes="0"/>
+                      <Component id="jLabel2" alignment="0" min="-2" pref="101" max="-2" attributes="0"/>
+                      <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="jLabel3" alignment="0" max="32767" attributes="0"/>
+                          <Component id="jLabel1" alignment="0" max="32767" attributes="0"/>
+                          <Component id="jLabel4" alignment="0" max="32767" attributes="0"/>
+                          <Component id="jLabel5" alignment="0" min="-2" pref="101" max="-2" attributes="0"/>
                       </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jLabel2" alignment="0" min="-2" pref="101" max="-2" attributes="0"/>
-                              <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="jLabel3" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="jLabel1" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="jLabel4" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="jLabel5" alignment="0" min="-2" pref="101" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                          <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="jTxtIme" alignment="0" max="32767" attributes="0"/>
-                              <Component id="jTxtPrezime" alignment="0" max="32767" attributes="0"/>
-                              <Component id="jTxtRadniStaž" alignment="0" max="32767" attributes="0"/>
-                              <Component id="jTxtMasinovodjaID" alignment="0" max="32767" attributes="0"/>
-                              <Component id="jTxtDatumRodjenja" alignment="0" min="-2" pref="260" max="-2" attributes="0"/>
-                          </Group>
+                      <Component id="jLabel6" alignment="0" min="-2" pref="143" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="1" attributes="0">
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="jTxtNaziv" alignment="0" max="32767" attributes="0"/>
+                          <Component id="jTxtBrojSedista" alignment="0" max="32767" attributes="0"/>
+                          <Component id="jTxtVrsta" alignment="0" max="32767" attributes="0"/>
+                          <Component id="jTxtVozID" alignment="0" max="32767" attributes="0"/>
+                          <Component id="jTxtDatumProizvodnje" alignment="0" min="-2" pref="260" max="-2" attributes="0"/>
                       </Group>
+                      <Component id="cbVozovi" min="-2" pref="262" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
               </Group>
@@ -87,38 +82,44 @@
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="cbMasinovodje" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" attributes="0">
+                          <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+                          <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace pref="8" max="32767" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="1" attributes="0">
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Component id="cbVozovi" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
-                  <EmptySpace pref="62" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jTxtMasinovodjaID" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jTxtVozID" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="jLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="jTxtIme" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="jTxtNaziv" alignment="0" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="jTxtPrezime" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="jTxtBrojSedista" alignment="0" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jTxtDatumRodjenja" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jTxtDatumProizvodnje" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jTxtRadniStaž" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jTxtVrsta" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
-                  <Component id="btnIzmeniMasinovodju" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnIzmeniVoz" min="-2" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -129,7 +130,7 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Trebuchet MS" size="14" style="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Ime"/>
+            <Property name="text" type="java.lang.String" value="Naziv"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel2">
@@ -137,7 +138,7 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Trebuchet MS" size="14" style="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Ma&#x161;inovo&#x111;aID"/>
+            <Property name="text" type="java.lang.String" value="VozID"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel3">
@@ -145,7 +146,7 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Trebuchet MS" size="14" style="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Prezime"/>
+            <Property name="text" type="java.lang.String" value="Broj sedista"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel4">
@@ -153,7 +154,7 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Trebuchet MS" size="14" style="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Datum ro&#x111;enja"/>
+            <Property name="text" type="java.lang.String" value="Datum proizvodnje"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel5">
@@ -161,32 +162,38 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Trebuchet MS" size="14" style="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Radni sta&#x17e;"/>
+            <Property name="text" type="java.lang.String" value="Vrsta voza"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTxtMasinovodjaID">
+        <Component class="javax.swing.JTextField" name="jTxtVozID">
           <Properties>
             <Property name="enabled" type="boolean" value="false"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTxtIme">
+        <Component class="javax.swing.JTextField" name="jTxtNaziv">
+          <Properties>
+            <Property name="enabled" type="boolean" value="false"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTxtNazivActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JTextField" name="jTxtBrojSedista">
           <Properties>
             <Property name="enabled" type="boolean" value="false"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTxtPrezime">
+        <Component class="javax.swing.JTextField" name="jTxtVrsta">
           <Properties>
             <Property name="enabled" type="boolean" value="false"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTxtRadniSta&#x17e;">
-        </Component>
-        <Component class="javax.swing.JButton" name="btnIzmeniMasinovodju">
+        <Component class="javax.swing.JButton" name="btnIzmeniVoz">
           <Properties>
             <Property name="text" type="java.lang.String" value="Izmeni"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnIzmeniMasinovodjuActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnIzmeniVozActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel6">
@@ -194,23 +201,23 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Trebuchet MS" size="14" style="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Izaberi ma&#x161;inovo&#x111;u"/>
+            <Property name="text" type="java.lang.String" value="Izaberi voz"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JComboBox" name="cbMasinovodje">
+        <Component class="javax.swing.JComboBox" name="cbVozovi">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="0"/>
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cbMasinovodjeActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cbVozoviActionPerformed"/>
           </Events>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;Masinovodja&gt;"/>
+            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;Voz&gt;"/>
           </AuxValues>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTxtDatumRodjenja">
+        <Component class="javax.swing.JTextField" name="jTxtDatumProizvodnje">
           <Properties>
             <Property name="enabled" type="boolean" value="false"/>
           </Properties>

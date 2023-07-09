@@ -12,6 +12,8 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import repository.db.DbConnectionFactory;
 import repository.db.DbRepository;
 
@@ -20,11 +22,6 @@ import repository.db.DbRepository;
  * @author User
  */
 public class RepositoryMasinovodja implements DbRepository<Masinovodja>{
-
-    @Override
-    public List<Masinovodja> getAll(Masinovodja param) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
 
     @Override
     public void add(Masinovodja masinovodja) throws Exception {
@@ -92,6 +89,40 @@ public class RepositoryMasinovodja implements DbRepository<Masinovodja>{
             return null;
         }
                 
+    }
+    public List<Masinovodja> getMasinovodja(String ime, String prezime){
+         
+        try {
+            List<Masinovodja> masinovodje = new ArrayList<>();
+            String sql = "SELECT * FROM masinovodja WHERE Ime = ? AND Prezime = ?" ;
+            
+            Connection conn = DbConnectionFactory.getInstance().getConnection();
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString(1, ime);
+            ps.setString(2,prezime);
+            
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                Masinovodja masinovodja = new Masinovodja();
+                masinovodja.setMasinovodjaID(rs.getLong("MasinovodjaID"));
+                masinovodja.setIme(rs.getString("Ime"));
+                masinovodja.setPrezime(rs.getString("Prezime"));
+                masinovodja.setDatumRodjenja(rs.getDate("DatumRodjenja"));
+                masinovodja.setRadniStaz(rs.getInt("RadniStaz"));
+                masinovodje.add(masinovodja);
+            }
+            rs.close();
+            ps.close();
+            return masinovodje;
+        } catch (Exception ex) {
+            Logger.getLogger(RepositoryMasinovodja.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+    }
+
+    @Override
+    public List<Masinovodja> getAll(Masinovodja param) throws Exception {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
     
 }

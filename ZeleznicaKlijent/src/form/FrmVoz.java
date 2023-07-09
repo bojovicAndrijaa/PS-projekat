@@ -6,27 +6,29 @@ package form;
 
 import communication.Communication;
 import domain.Masinovodja;
+import domain.Voz;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.table.TableModel;
 import tables.MasinovodjaTableModel;
+import tables.VozTableModel;
 
 /**
  *
  * @author User
  */
-public class FrmMasinovodja extends javax.swing.JDialog {
+public class FrmVoz extends javax.swing.JDialog {
 
     /**
-     * Creates new form FrmMasinovodja
+     * Creates new form FrmVoz
      */
-    public FrmMasinovodja(java.awt.Frame parent, boolean modal) {
+    public FrmVoz(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         setLocationRelativeTo(null);
-        this.setTitle("Masinovođa");
+        this.setTitle("Voz");
         prepareTable();
     }
 
@@ -39,19 +41,40 @@ public class FrmMasinovodja extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTableMasinovodje = new javax.swing.JTable();
         jBtnDodaj = new javax.swing.JButton();
         jBtnIzmeni = new javax.swing.JButton();
-        jBtnPretragaMasinovodje = new javax.swing.JButton();
+        jBtnPretragaVoza = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTableVoz = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jLabel1.setFont(new java.awt.Font("Trebuchet MS", 1, 18)); // NOI18N
-        jLabel1.setText("Pregled mašinovođa");
+        jBtnDodaj.setText("Dodaj voz");
+        jBtnDodaj.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBtnDodajActionPerformed(evt);
+            }
+        });
 
-        jTableMasinovodje.setModel(new javax.swing.table.DefaultTableModel(
+        jBtnIzmeni.setText("Izmeni voz");
+        jBtnIzmeni.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBtnIzmeniActionPerformed(evt);
+            }
+        });
+
+        jBtnPretragaVoza.setText("Pretrazi voz");
+        jBtnPretragaVoza.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBtnPretragaVozaActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setFont(new java.awt.Font("Trebuchet MS", 1, 18)); // NOI18N
+        jLabel1.setText("Pregled vozova");
+
+        jTableVoz.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -62,28 +85,7 @@ public class FrmMasinovodja extends javax.swing.JDialog {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTableMasinovodje);
-
-        jBtnDodaj.setText("Dodaj mašinovođu");
-        jBtnDodaj.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBtnDodajActionPerformed(evt);
-            }
-        });
-
-        jBtnIzmeni.setText("Izmeni mašinovođu");
-        jBtnIzmeni.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBtnIzmeniActionPerformed(evt);
-            }
-        });
-
-        jBtnPretragaMasinovodje.setText("Pretraga mašinovođe");
-        jBtnPretragaMasinovodje.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBtnPretragaMasinovodjeActionPerformed(evt);
-            }
-        });
+        jScrollPane1.setViewportView(jTableVoz);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -99,9 +101,9 @@ public class FrmMasinovodja extends javax.swing.JDialog {
                             .addGap(49, 49, 49)
                             .addComponent(jBtnIzmeni, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jBtnPretragaMasinovodje, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jBtnPretragaVoza, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 586, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(29, Short.MAX_VALUE))
+                .addContainerGap(44, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -114,8 +116,8 @@ public class FrmMasinovodja extends javax.swing.JDialog {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jBtnDodaj)
                     .addComponent(jBtnIzmeni)
-                    .addComponent(jBtnPretragaMasinovodje))
-                .addContainerGap(106, Short.MAX_VALUE))
+                    .addComponent(jBtnPretragaVoza))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
 
         pack();
@@ -124,40 +126,40 @@ public class FrmMasinovodja extends javax.swing.JDialog {
     private void jBtnDodajActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnDodajActionPerformed
         // TODO add your handling code here:
         this.dispose();
-        new FrmKreirajMasinovodju(new JFrame(), true).setVisible(true);
+        new FrmKreirajVoz(new JFrame(), true).setVisible(true);
     }//GEN-LAST:event_jBtnDodajActionPerformed
 
     private void jBtnIzmeniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnIzmeniActionPerformed
         // TODO add your handling code here:
-         new FrmIzmeniMasinovodju(new JFrame(),true).setVisible(true);
-         this.dispose();
+        this.dispose();
+        new FrmIzmeniVoz(new JFrame(),true).setVisible(true);
     }//GEN-LAST:event_jBtnIzmeniActionPerformed
 
-    private void jBtnPretragaMasinovodjeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnPretragaMasinovodjeActionPerformed
+    private void jBtnPretragaVozaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnPretragaVozaActionPerformed
         // TODO add your handling code here:
-        new FrmNadjiMasinovodju(new JFrame(), true).setVisible(true);
-    }//GEN-LAST:event_jBtnPretragaMasinovodjeActionPerformed
+        this.dispose();
+        new FrmNadjiVoz(new JFrame(), true).setVisible(true);
+    }//GEN-LAST:event_jBtnPretragaVozaActionPerformed
 
     /**
      * @param args the command line arguments
      */
-
-
+   
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBtnDodaj;
     private javax.swing.JButton jBtnIzmeni;
-    private javax.swing.JButton jBtnPretragaMasinovodje;
+    private javax.swing.JButton jBtnPretragaVoza;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTableMasinovodje;
+    private javax.swing.JTable jTableVoz;
     // End of variables declaration//GEN-END:variables
 
-    private void prepareTable() {
+     private void prepareTable() {
         
         try {
-            List<Masinovodja> masinovodje = Communication.getInstance().ucitajListuMasinovodja();
-            TableModel tm = new MasinovodjaTableModel(masinovodje);
-            jTableMasinovodje.setModel(tm);
+            List<Voz> vozovi  = Communication.getInstance().ucitajListuVozova();
+            TableModel tm = new VozTableModel(vozovi);
+            jTableVoz.setModel(tm);
         } catch (Exception ex) {
             Logger.getLogger(FrmMasinovodja.class.getName()).log(Level.SEVERE, null, ex);
         }

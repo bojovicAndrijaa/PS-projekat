@@ -68,7 +68,7 @@ public class Communication {
         sender.send(request);
         Response response=(Response)receiver.receive();
         if(response.getException()==null){
-            return (List<Voz>)response.getResult();
+            return (List<Voz>) response.getResult();
         }else{
             throw response.getException();
         }
@@ -164,6 +164,17 @@ public class Communication {
         if(response.getException()==null){
             return (List<Voznja>)response.getResult();
         }else{
+            throw response.getException();
+        }
+    }
+    public List<DestinacijaVoznje> UcitajListuDestinacija() throws Exception{
+        Request request=new Request(Operation.UcitajListuDestinacija, null);
+        sender.send(request);
+        Response response=(Response)receiver.receive();
+        if(response.getException()==null){
+            return (List<DestinacijaVoznje>)response.getResult();
+        }else{
+            System.out.println("communication.Communication.UcitajListuDestinacija()");
             throw response.getException();
         }
     }

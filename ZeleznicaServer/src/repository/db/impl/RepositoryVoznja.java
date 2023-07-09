@@ -38,7 +38,7 @@ public class RepositoryVoznja implements DbRepository<Voznja>{
         
         ps.setLong(1,voznja.getVoznjaID());
         ps.setInt(2, voznja.getTrajanje());
-        ps.setDate(3, new java.sql.Date(voznja.getDatum().getTime()));
+        ps.setObject(3, voznja.getDatum());
         ps.setLong(4, voznja.getMasinovodja().getMasinovodjaID());
         ps.setLong(5, voznja.getVoz().getVozID());
         ps.executeUpdate();
@@ -54,7 +54,7 @@ public class RepositoryVoznja implements DbRepository<Voznja>{
         Connection connection = DbConnectionFactory.getInstance().getConnection();
         PreparedStatement ps = connection.prepareStatement(sql);
         
-        ps.setDate(1, new java.sql.Date(voznja.getDatum().getTime()));
+        ps.setObject(1, voznja.getDatum());
         ps.setInt(2, voznja.getTrajanje());
         ps.setLong(3, voznja.getMasinovodja().getMasinovodjaID());
         ps.setLong(4, voznja.getVoz().getVozID());
@@ -83,7 +83,7 @@ public class RepositoryVoznja implements DbRepository<Voznja>{
                 Voznja voznja = new Voznja();
                 voznja.setVoznjaID(rs.getLong("VoznjaID"));
                 voznja.setTrajanje(rs.getInt("Trajanje"));
-                voznja.setDatum(new java.util.Date(rs.getDate("Datum").getTime()));
+                voznja.setDatum(rs.getTimestamp("datum").toLocalDateTime());
                 voznja.setMasinovodja(getMasinovodjaForId(rs.getLong("MasinovodjaID")));
                 voznja.setVoz(getVozForID(rs.getLong("VozID")));
                 voznje.add(voznja);

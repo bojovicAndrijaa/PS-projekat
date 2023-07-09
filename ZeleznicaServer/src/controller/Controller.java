@@ -54,11 +54,11 @@ public class Controller {
         return controller;
     }
 
-    public List<Masinovodja> UcitajListuMasinovodja() throws Exception {
+    public List<Masinovodja> ucitajListuMasinovodja() throws Exception {
         return repositoryMasinovodja.getAll();
     }
 //
-    public void KreirajMasinovodju(Masinovodja masinovodja) throws Exception {
+    public void kreirajMasinovodju(Masinovodja masinovodja) throws Exception {
         ((DbRepository) repositoryMasinovodja).connect();
         try {
             repositoryMasinovodja.add(masinovodja);
@@ -72,11 +72,11 @@ public class Controller {
         }
     }
 //    
-    public List<Voz> UcitajListuVozova() throws Exception {
+    public List<Voz> ucitajListuVozova() throws Exception {
         return repositoryVoz.getAll();
     }
 //    
-    public void KreirajVoz(Voz voz) throws Exception {
+    public void kreirajVoz(Voz voz) throws Exception {
         ((DbRepository) repositoryVoz).connect();
         try {
             repositoryVoz.add(voz);
@@ -90,7 +90,7 @@ public class Controller {
         }
     }
 
-      public Voznja KreirajVoznju(Voznja voznja) throws Exception {
+      public Voznja kreirajVoznju(Voznja voznja) throws Exception {
         ((DbRepository) repositoryVoznja).connect();
         try {
             repositoryVoznja.add(voznja);
@@ -105,33 +105,36 @@ public class Controller {
         return voznja;
     }
     
-    public List<Mesto> UcitajListuMesta() throws Exception {
+    public List<Mesto> ucitajListuMesta() throws Exception {
         return repositoryMesto.getAll();
     }
     
-    public List<Voznja> UcitajListuVoznji() throws Exception {
+    public List<Voznja> ucitajListuVoznji() throws Exception {
         return repositoryVoznja.getAll();
     }
         
-    public List<VrstaVoza> UcitajListuVrstiVozova() throws Exception {
+    public List<VrstaVoza> ucitajListuVrstiVozova() throws Exception {
         return repositoryVrstaVoza.getAll();
     }
-
-//    public void IzmeniPodatkeVoza(Voz voz) throws Exception {
-//        ((DbRepository) repositoryVoz).connect();
-//        try {
-//            ((DbRepository) repositoryVoz).edit(voz);
-//            ((DbRepository) repositoryVoz).commit();
-//        } catch (Exception e) {
-//            System.out.println(e.getMessage());
-//            ((DbRepository) repositoryVoz).rollback();
-//            throw e;
-//        } finally {
-//            ((DbRepository) repositoryVoz).disconnect();
-//        }
-//    }
+    public List<DestinacijaVoznje> UcitajListuDestinacija() throws Exception {
+        return repositoryDestinacijaVoznje.getAll();
+    }
     
-    public void IzmeniVoznju(Voznja voznja) throws Exception {
+     public void KreirajDestinaciju(DestinacijaVoznje destinacija) throws Exception {
+        ((DbRepository) repositoryDestinacijaVoznje).connect();
+        try {
+            repositoryDestinacijaVoznje.add(destinacija);
+            ((DbRepository) repositoryDestinacijaVoznje).commit();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            ((DbRepository) repositoryDestinacijaVoznje).rollback();
+            throw e;
+        } finally {
+            ((DbRepository) repositoryDestinacijaVoznje).disconnect();
+        }
+    }
+    
+    public void izmeniVoznju(Voznja voznja) throws Exception {
         ((DbRepository) repositoryVoznja).connect();
         try {
             ((DbRepository) repositoryVoznja).edit(voznja);
@@ -169,11 +172,26 @@ public class Controller {
             ((DbRepository) repositoryVoz).rollback();
             throw e;
         } finally {
-            ((DbRepository) repositoryMasinovodja).disconnect();
+            ((DbRepository) repositoryVoz).disconnect();
         }
     }
     public List<DestinacijaVoznje> ucitajListuDestinacija () throws Exception {
            return repositoryDestinacijaVoznje.getAll();
     }
+    
+//    public List<Masinovodja> nadjiMasinovodju(String ime,String prezime) throws Exception{
+//        ((DbRepository) repositoryMasinovodja).connect();
+//        try {
+//            ((DbRepository) repositoryMasinovodja);
+//            ((DbRepository) repositoryMasinovodja).commit();
+//        } catch (Exception e) {
+//            System.out.println(e.getMessage());
+//            ((DbRepository) repositoryMasinovodja).rollback();
+//            throw e;
+//        } finally {
+//            ((DbRepository) repositoryMasinovodja).disconnect();
+//        }
+//        return repositoryMasinovodja.
+//    }
     
 }

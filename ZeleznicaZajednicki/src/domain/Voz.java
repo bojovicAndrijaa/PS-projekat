@@ -74,7 +74,7 @@ public class Voz implements Serializable {
 
     @Override
     public String toString() {
-        return "Voz{" + "vozID=" + vozID + ", nazivVoza=" + nazivVoza + ", brojSedista=" + brojSedista + ", godinaProizvodnje=" + godinaProizvodnje + ", vrstaVozaID=" + vrstaVozaID + '}';
+        return  vozID + " "+ nazivVoza;
     }
  
     

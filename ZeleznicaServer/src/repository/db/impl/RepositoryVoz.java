@@ -79,7 +79,7 @@ public class RepositoryVoz implements DbRepository<Voz>{
                 voz.setNazivVoza(rs.getString("NazivVoza"));
                 voz.setBrojSedista(rs.getInt("BrojSedista"));
                 voz.setGodinaProizvodnje(rs.getDate("GodinaProizvodnje"));
-                voz.setVrstaVozaID(getVrstaAutobusasForIDVrste(rs.getLong("VrstaVoza")));
+                voz.setVrstaVozaID(getVrstaVozaForIDVrste(rs.getLong("VrstaVoza")));
                 vozovi.add(voz);
             }
             rs.close();
@@ -93,7 +93,7 @@ public class RepositoryVoz implements DbRepository<Voz>{
 
     
     
-    private VrstaVoza getVrstaAutobusasForIDVrste(long vrstaID){
+    private VrstaVoza getVrstaVozaForIDVrste(long vrstaID){
         RepositoryVrstaVoza repositoryVrstaVoza=new RepositoryVrstaVoza();
         List<VrstaVoza> vrste = repositoryVrstaVoza.getAll();
         for (VrstaVoza vrstaVoza : vrste) {

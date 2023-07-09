@@ -27,8 +27,18 @@ public class RepositoryDestinacijaVoznje implements DbRepository<DestinacijaVozn
     }
 
     @Override
-    public void add(DestinacijaVoznje param) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public void add(DestinacijaVoznje destinacijaVoznje) throws Exception {
+         String sql = "INSERT INTO destinacijavoznje(VoznjaID,PostanskiBroj) VALUES(?,?)";
+
+            Connection connection = DbConnectionFactory.getInstance().getConnection();
+
+            PreparedStatement pstatement = connection.prepareStatement(sql);
+            
+            pstatement.setLong(1, destinacijaVoznje.getVoznja().getVoznjaID());
+            pstatement.setLong(2, destinacijaVoznje.getMesto().getPostanskiBroj());
+            pstatement.executeUpdate();
+            pstatement.close();
+        
     }
 
     @Override
