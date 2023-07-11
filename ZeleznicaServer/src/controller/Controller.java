@@ -205,20 +205,6 @@ public class Controller {
             ((DbRepository) repositoryVoznja).disconnect();
         }
     }
-    
-//    public List<Masinovodja> nadjiMasinovodju(String ime,String prezime) throws Exception{
-//        ((DbRepository) repositoryMasinovodja).connect();
-//        try {
-//            ((DbRepository) repositoryMasinovodja);
-//            ((DbRepository) repositoryMasinovodja).commit();
-//        } catch (Exception e) {
-//            System.out.println(e.getMessage());
-//            ((DbRepository) repositoryMasinovodja).rollback();
-//            throw e;
-//        } finally {
-//            ((DbRepository) repositoryMasinovodja).disconnect();
-//        }
-//        return repositoryMasinovodja.
-//    }
+
     
 }

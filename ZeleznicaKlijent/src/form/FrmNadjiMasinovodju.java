@@ -148,8 +148,8 @@ public class FrmNadjiMasinovodju extends javax.swing.JDialog {
         }
         try {
             List<Masinovodja> masinovodje = Communication.getInstance().nadjiMasinovodju(new Masinovodja(null, ime, prezime, null, 0));
-            if (masinovodje == null) {
-                JOptionPane.showMessageDialog(this, "Greska pri ucitavanju masinovodja, ne postoji!", "Greska", JOptionPane.ERROR_MESSAGE);
+            if (masinovodje.size() == 0) {
+                JOptionPane.showMessageDialog(this, "Sistem ne moze da nadje masinovodju po zadatoj vrednosti!", "Greska", JOptionPane.ERROR_MESSAGE);
             }
 
             TableModel model = new MasinovodjaTableModel(masinovodje);

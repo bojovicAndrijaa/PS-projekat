@@ -183,17 +183,17 @@ public class FrmIzmeniMasinovodju extends javax.swing.JDialog {
             Masinovodja masinovodja = (Masinovodja) cbMasinovodje.getSelectedItem();
             masinovodja.setRadniStaz(radniStazInt);
             Communication.getInstance().zapamtiMasinovodju(masinovodja); 
-            JOptionPane.showMessageDialog(this, "Uspenso izmenjen radni staz masinovodje");
+            JOptionPane.showMessageDialog(this, "Sistem je uspesno izvrsio izmenu podataka!");
             cbMasinovodje.removeAllItems();
             pripremiMasinovodje();
                this.dispose();
              new FrmMasinovodja(new JFrame(), true).setVisible(true);
         } catch (NumberFormatException e) {
             System.out.println(e.getMessage());
-            JOptionPane.showMessageDialog(this, "Radni staz masinovodje mora biti broj");
+            JOptionPane.showMessageDialog(this, "Sistem ne moze da zapamti podatke o masinovodji!");
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
-            JOptionPane.showMessageDialog(this, "Greska pri izmeni radnog staza masinovodje!","Greska",JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Sistem ne moze da zapamti podatke o masinovodji!!","Greska",JOptionPane.ERROR_MESSAGE);
         }
 
     }//GEN-LAST:event_btnIzmeniMasinovodjuActionPerformed

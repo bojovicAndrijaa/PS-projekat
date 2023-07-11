@@ -10,10 +10,20 @@ import java.io.Serializable;
  *
  * @author User
  */
-public class Korisnik implements Serializable{
+public class Korisnik implements GenericEntity{
     String username;
     String password;
 
+    public Korisnik(String username, String password) {
+        this.username = username;
+        this.password = password;
+    }
+
+    public Korisnik() {
+    }
+
+    
+    
     public String getUsername() {
         return username;
     }
@@ -28,6 +38,26 @@ public class Korisnik implements Serializable{
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    @Override
+    public String getTableName() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public String getColumnNamesForInsert() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public String getInsertValues() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public void setId(Long id) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
     
     

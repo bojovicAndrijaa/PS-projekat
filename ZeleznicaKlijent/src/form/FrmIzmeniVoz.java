@@ -185,7 +185,7 @@ public class FrmIzmeniVoz extends javax.swing.JDialog {
         String brojSedista= jTxtBrojSedista.getText();
         int brojSedistaInt = 0;
         if(brojSedista.length() == 0){
-            JOptionPane.showMessageDialog(this, "Morate uneti broj sedista voza!");
+            JOptionPane.showMessageDialog(this, "Sistem ne moze da zapamti voz!");
             return;
         }
         try {
@@ -193,17 +193,17 @@ public class FrmIzmeniVoz extends javax.swing.JDialog {
             Voz voz = (Voz) cbVozovi.getSelectedItem();
             voz.setBrojSedista(brojSedistaInt);
             Communication.getInstance().zapamtiVoz(voz);
-            JOptionPane.showMessageDialog(this, "Uspenso izmenjen broj sedista voza");
+            JOptionPane.showMessageDialog(this, "Sistem je uspesno izmenio podatke");
             cbVozovi.removeAllItems();
             prepareIzmena();
             this.dispose();
             new FrmVoz(new JFrame(), true).setVisible(true);
         } catch (NumberFormatException e) {
             System.out.println(e.getMessage());
-            JOptionPane.showMessageDialog(this, "Broj sedista voza mora biti broj");
+            JOptionPane.showMessageDialog(this, "Sistem ne moze da zapamti voz!");
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
-            JOptionPane.showMessageDialog(this, "Greska pri izmeni broja sedista voza!","Greska",JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Sistem ne moze da zapamti voz!","Greska",JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btnIzmeniVozActionPerformed
 

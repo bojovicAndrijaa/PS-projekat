@@ -4,6 +4,7 @@
  */
 package repository.db;
 
+import java.io.FileInputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.util.Properties;
@@ -30,9 +31,13 @@ public class DbConnectionFactory {
     public Connection getConnection() throws Exception {
         if (connection == null || connection.isClosed()) {
             Properties properties = new Properties();
-            String url="jdbc:mysql://localhost:3306/projekat";
-            String user="root";
-            String pass="admin";
+            properties.load(new FileInputStream("config/dbconfig.properties"));
+            String url = properties.getProperty("url");
+            String user = properties.getProperty("username");
+            String pass = properties.getProperty("password");
+//            String url="jdbc:mysql://localhost:3306/projekat";
+//            String user="root";
+//            String pass="admin";
            
             connection = DriverManager.getConnection(url, user, pass);
             connection.setAutoCommit(false);

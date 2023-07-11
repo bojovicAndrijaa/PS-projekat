@@ -493,7 +493,7 @@ public class FrmIzmeniVoznju extends javax.swing.JDialog {
         String trajanjeS = jTxtTrajanje.getText();
 
         if (trajanjeS == null || trajanjeS.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Obavezno je uneti trajanje voznje");
+            JOptionPane.showMessageDialog(this, "Sistem ne moze da zapamti voznju!");
             return;
         }
 

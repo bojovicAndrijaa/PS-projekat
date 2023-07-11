@@ -20,6 +20,7 @@ public class Communication {
     Receiver receiver;
     
     private static Communication instance;
+    
     private Communication() throws Exception{
         socket=new Socket("127.0.0.1", 9001);
         sender=new Sender(socket);

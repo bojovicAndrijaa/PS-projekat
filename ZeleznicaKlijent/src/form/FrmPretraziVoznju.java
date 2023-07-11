@@ -136,7 +136,7 @@ public class FrmPretraziVoznju extends javax.swing.JDialog {
             .addGroup(layout.createSequentialGroup()
                 .addGap(16, 16, 16)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 5, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -148,7 +148,7 @@ public class FrmPretraziVoznju extends javax.swing.JDialog {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(30, 30, 30)
                         .addComponent(btnPretaziVoznju, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 91, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(115, 115, 115))
         );
@@ -162,7 +162,7 @@ public class FrmPretraziVoznju extends javax.swing.JDialog {
             String nazivMesta = tbMesto.getText();
          
             if(nazivMesta.isEmpty()){
-                JOptionPane.showConfirmDialog(this, "Morate izbarati grad za koji pretrazujete");
+                JOptionPane.showMessageDialog(this, "Sistem ne moze da nadje voznju po zadatoj vrednosti!");
             }
 
             pretraziVoznjeZaZadatiKriterijum(nazivMesta);
@@ -320,7 +320,7 @@ public class FrmPretraziVoznju extends javax.swing.JDialog {
         return null;
     }
 
-    private void pretraziVoznjeZaZadatiKriterijum(String nazivMesta) {
+       private void pretraziVoznjeZaZadatiKriterijum(String nazivMesta) {
          List<Voznja> voznje;
          List<Voznja> voznjePretrazene = new ArrayList<>();
          List<Mesto> mestaPretrazena = new ArrayList<>();

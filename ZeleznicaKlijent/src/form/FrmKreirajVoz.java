@@ -175,7 +175,7 @@ public class FrmKreirajVoz extends javax.swing.JDialog {
             return;
         }
         if (postoji(Long.valueOf(vozId))) {
-            JOptionPane.showMessageDialog(this, "Voz sa vozId '"+jTxtVozID.getText()+"' vec postoji.");
+            JOptionPane.showMessageDialog(this, "Sistem ne moze da kreira voz");
         } else {
             try {
                 Communication.getInstance().kreirajVoz(

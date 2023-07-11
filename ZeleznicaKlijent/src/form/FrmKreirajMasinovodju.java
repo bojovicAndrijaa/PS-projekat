@@ -156,24 +156,24 @@ public class FrmKreirajMasinovodju extends javax.swing.JDialog {
         String radniStaz = jTxtRadniStaž.getText();
         
         if(ime.length() < 1){
-            JOptionPane.showMessageDialog(this, "Ime mora biti duze od 1");
+            JOptionPane.showMessageDialog(this, "Sistem ne moze da kreira masinovodju!");
             return;
         }
          if(prezime.length() < 2){
-            JOptionPane.showMessageDialog(this, "Preizme mora biti duze od 2");
+            JOptionPane.showMessageDialog(this, "Sistem ne moze da kreira masinovodju!");
             return;
         }
         
         try {
             Long.parseLong(masinovodjaId); 
         } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(this, "MasinovodjaID mora biti broj!");
+            JOptionPane.showMessageDialog(this, "Sistem ne moze da kreira masinovodju!");
             return;
         }
         try {
             Long.parseLong(radniStaz); 
         } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(this, "Radni staz mora biti broj!");
+            JOptionPane.showMessageDialog(this, "Sistem ne moze da kreira masinovodju!");
             return;
         }
         
@@ -189,7 +189,7 @@ public class FrmKreirajMasinovodju extends javax.swing.JDialog {
              new FrmMasinovodja(new JFrame(), true).setVisible(true);
             
         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(this, "Greska pri dodavanju masinovodje, vec postoji!","Greska",JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Sistem ne moze da kreira masinovodju!!","Greska",JOptionPane.ERROR_MESSAGE);
             System.out.println(ex.getMessage());
         }
          

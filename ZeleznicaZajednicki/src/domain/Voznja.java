@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
  *
  * @author User
  */
-public class Voznja  implements Serializable{
+public class Voznja  implements GenericEntity{
     private Long voznjaID;
     private int trajanje;
     private LocalDateTime datum;
@@ -80,6 +80,26 @@ public class Voznja  implements Serializable{
     public String toString() {
         return "Masinovodja: " + masinovodja.getIme()+ " " + masinovodja.getPrezime() + ", upravlja vozom: " + voz.getNazivVoza()
                 + ", dana: " + datum;
+    }
+
+    @Override
+    public String getTableName() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public String getColumnNamesForInsert() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public String getInsertValues() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public void setId(Long id) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
     
     

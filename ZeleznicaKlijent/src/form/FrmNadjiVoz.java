@@ -53,7 +53,7 @@ public class FrmNadjiVoz extends javax.swing.JDialog {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Trebuchet MS", 1, 14)); // NOI18N
-        jLabel1.setText("Preraga voza po nazivu i vozId");
+        jLabel1.setText("Preraga voza po vozId");
 
         jTableVoz.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -108,9 +108,8 @@ public class FrmNadjiVoz extends javax.swing.JDialog {
                 .addGap(27, 27, 27)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btnPretrazi, javax.swing.GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(tbVozID, javax.swing.GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)))
+                    .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(tbVozID, javax.swing.GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE))
                 .addGap(33, 33, 33)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(18, Short.MAX_VALUE))
@@ -125,20 +124,20 @@ public class FrmNadjiVoz extends javax.swing.JDialog {
         String vozIDs = tbVozID.getText();
 
         if (vozIDs == null || vozIDs.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Morate uneti vozID!");
+            JOptionPane.showMessageDialog(this, "Sistem ne moze da nadje voz po zadatoj vrednosti!");
             return;
         }
         try{
             Long vozID = Long.parseLong(vozIDs);
         } catch (NumberFormatException e){
-            JOptionPane.showMessageDialog(this, "VozID mora biti broj!");
+            JOptionPane.showMessageDialog(this, "Sistem ne moze da nadje voz po zadatoj vrednosti!");
         }
         
         Long vozID = Long.parseLong(vozIDs);
         try {
             List<Voz> vozovi = Communication.getInstance().nadjiVoz(new Voz(vozID, null, 0, null, null));
-            if(vozovi == null ){
-                JOptionPane.showMessageDialog(this, "Greska pri ucitavanju vozova, ne postoji!","Greska",JOptionPane.ERROR_MESSAGE);
+            if(vozovi.size() == 0){
+                JOptionPane.showMessageDialog(this, "Sistem ne moze da nadje voz po zadatoj vrednosti!","Greska",JOptionPane.ERROR_MESSAGE);
                 return;
             }
 

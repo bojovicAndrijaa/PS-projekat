@@ -263,14 +263,14 @@ public class FrmKreirajVoznju extends javax.swing.JDialog {
         try {
             Long.parseLong(voznjaIDS); 
         } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(this, "VoznjaID mora biti broj!");
+            JOptionPane.showMessageDialog(this, "Sistem ne moze da kreira voznju!");
             return;
         }
         
         try{
             Integer.parseInt(trajanjeS);
         }catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(this, "Trajanje mora biti broj, jer predstavlja trajanje voznje u minutima!");
+            JOptionPane.showMessageDialog(this, "Sistem ne moze da kreira voznju!");
             return;
         }
         
@@ -289,12 +289,12 @@ public class FrmKreirajVoznju extends javax.swing.JDialog {
             voznja = Communication.getInstance().kreirajVoznju(voznja);
             Communication.getInstance().kreirajDestinacijuVoznje(
                     new DestinacijaVoznje(voznja,0,(Mesto)cbMestoDolaska.getSelectedItem()));
-            JOptionPane.showMessageDialog(this, "Voznja je uspesno kreirana.");
+            JOptionPane.showMessageDialog(this, "Sistem je uspesno kreirao voznju!");
             this.dispose();
             new FrmVoznja(new JFrame(), true).setVisible(true);
         } catch (Exception ex) {
             Logger.getLogger(FrmVoznja.class.getName()).log(Level.SEVERE, null, ex);
-            JOptionPane.showMessageDialog(this, "Greska pri kreiranju voznje, vec postoji!","Greska",JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Sistem ne moze da kreira voznju!","Greska",JOptionPane.ERROR_MESSAGE);
             System.out.println(ex.getMessage());
         }
     }//GEN-LAST:event_btnDodajVoznjuActionPerformed
